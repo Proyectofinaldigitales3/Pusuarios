@@ -1,0 +1,4 @@
+user1,1234,Juan Perez,500.50,0,0
+user2,5678,Maria Gomez,1200.75,1,0
+user3,abcd,Carlos Lopez,300.00,2,1
+user4,efgh,Sofia Martinez,850.25,0,0
