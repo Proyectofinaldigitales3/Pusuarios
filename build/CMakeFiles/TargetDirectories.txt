@@ -1,4 +1,4 @@
-C:/Users/57321/Desktop/U/ELECTRONICA DIGITAL III/2024-2/Pusuarios/build/CMakeFiles/practica_3.dir
+C:/Users/57321/Desktop/U/ELECTRONICA DIGITAL III/2024-2/Pusuarios/build/CMakeFiles/pusuarios.dir
 C:/Users/57321/Desktop/U/ELECTRONICA DIGITAL III/2024-2/Pusuarios/build/CMakeFiles/edit_cache.dir
 C:/Users/57321/Desktop/U/ELECTRONICA DIGITAL III/2024-2/Pusuarios/build/CMakeFiles/rebuild_cache.dir
 C:/Users/57321/Desktop/U/ELECTRONICA DIGITAL III/2024-2/Pusuarios/build/pico-sdk/CMakeFiles/edit_cache.dir

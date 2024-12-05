@@ -22,19 +22,15 @@
  */
 #define DEBOUNCE_DELAY 200000
 
-#define NAME_LENGTH 50
-
 /**
  * @brief Número máximo de usuarios permitidos en el sistema de datos.
  */
-#define MAX_USERS 100
-#define USER_FILE "users.txt"
+#define NUM_USERS 5
 
 /**
  * @brief Longitud del ID de usuario.
  */
 #define ID_LENGTH 6
-#define BALANCE_LENGTH 30
 
 /**
  * @brief Longitud de la contraseña.
@@ -73,6 +69,8 @@ typedef enum {
     STATE_ENTER_ID,          /**< Estado para ingresar el ID de usuario */
     STATE_ENTER_PASSWORD,    /**< Estado para ingresar la contraseña */
     STATE_LOGGED_IN,         /**< Estado cuando el usuario ha iniciado sesión correctamente */
+    STATE_CHECK_BALANCE,
+    STATE_WITHDRAW_MONEY,
     STATE_CHANGE_PASSWORD,   /**< Estado para cambiar la contraseña */
     STATE_CONFIRM_PASSWORD   /**< Estado para confirmar el cambio de contraseña */
 } SystemState;
@@ -83,9 +81,9 @@ typedef enum {
 typedef struct {
     char id[ID_LENGTH + 1];                 /**< ID del usuario */
     char password[PASSWORD_LENGTH + 1];     /**< Contraseña del usuario */
-    char name[NAME_LENGTH];                          /**< Nombre del usuario */
-    double balance;
-    int failed_attempts;                /**< Número de intentos fallidos del usuario */
+    char name[20];                          /**< Nombre del usuario */
+     double balance;
+    uint8_t failed_attempts;                /**< Número de intentos fallidos del usuario */
     bool is_blocked;                        /**< Indica si el usuario está bloqueado */
 } User;
 
@@ -186,13 +184,14 @@ void handle_timeout(void);
  * @brief Muestra el menú de opciones del usuario una vez que ha iniciado sesión.
  */
 void show_menu(void);
-
+void amount_menu(void);
 /**
  * @brief Procesa las acciones del usuario cuando ha iniciado sesión.
  * 
  * @param key Tecla presionada por el usuario.
  */
 void process_logged_in_state(char key);
+void amount_selection(char key);
 
 /**
  * @brief Procesa la tecla presionada por el usuario según el estado actual del sistema.
@@ -200,14 +199,7 @@ void process_logged_in_state(char key);
  * @param key Tecla presionada por el usuario.
  */
 void process_key(char key);
-
-void add_user(const char *filename, const char *id, const char *password, const char *name);
-
-void save_users(const char *filename);
-
-void load_users(const char *filename);
-void main_menu(void);
-void new_usero(void);
 void withdraw_money();
 void check_balance();
+
 #endif // TCL_H

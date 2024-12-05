@@ -1030,7 +1030,7 @@
 					[
 						0
 					],
-					"name" : "practica_3",
+					"name" : "pusuarios",
 					"targetIndexes" : 
 					[
 						4
@@ -1165,9 +1165,9 @@
 				},
 				{
 					"directoryIndex" : 0,
-					"id" : "practica_3::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-practica_3-Debug-9e28669908ca0ac92840.json",
-					"name" : "practica_3",
+					"id" : "pusuarios::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pusuarios-Debug-a3a6bc23e75864eb7f7f.json",
+					"name" : "pusuarios",
 					"projectIndex" : 0
 				},
 				{

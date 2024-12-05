@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "practica_3.elf"
+			"path" : "pusuarios.elf"
 		}
 	],
 	"backtrace" : 1,
@@ -259,7 +259,7 @@
 				},
 				{
 					"backtrace" : 8,
-					"define" : "PICO_TARGET_NAME=\"practica_3\""
+					"define" : "PICO_TARGET_NAME=\"pusuarios\""
 				},
 				{
 					"backtrace" : 2,
@@ -701,7 +701,7 @@
 				},
 				{
 					"backtrace" : 8,
-					"define" : "PICO_TARGET_NAME=\"practica_3\""
+					"define" : "PICO_TARGET_NAME=\"pusuarios\""
 				},
 				{
 					"backtrace" : 2,
@@ -1105,7 +1105,7 @@
 				},
 				{
 					"backtrace" : 8,
-					"define" : "PICO_TARGET_NAME=\"practica_3\""
+					"define" : "PICO_TARGET_NAME=\"pusuarios\""
 				},
 				{
 					"backtrace" : 2,
@@ -1317,7 +1317,7 @@
 			"id" : "bs2_default_padded_checksummed_asm::@bc554eaed616d198a22d"
 		}
 	],
-	"id" : "practica_3::@6890427a1f51a3e7e1df",
+	"id" : "pusuarios::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -2102,7 +2102,7 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-Wl,-Map=practica_3.elf.map",
+				"fragment" : "-Wl,-Map=pusuarios.elf.map",
 				"role" : "flags"
 			},
 			{
@@ -2153,8 +2153,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "practica_3",
-	"nameOnDisk" : "practica_3.elf",
+	"name" : "pusuarios",
+	"nameOnDisk" : "pusuarios.elf",
 	"paths" : 
 	{
 		"build" : ".",

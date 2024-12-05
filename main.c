@@ -40,15 +40,9 @@ int main() {
         if (key_pressed) {
             process_key(last_key);   /**< Procesa la última tecla presionada */
             key_pressed = false;     /**< Reinicia la bandera de tecla presionada */
-        }
-        
-        if (current_state != STATE_LOGGED_IN && 
-            absolute_time_diff_us(input_start_time, get_absolute_time()) > (MAX_INPUT_TIME_MS * 1000)) {
-            handle_timeout();  /**< Maneja la parte en que se ha excedido el tiempo límite para la entrada */
-        }
-        
-        sleep_ms(500);          /**< retraso de 500 ms  */
+        sleep_ms(500);         
     }
     
     return 0;
+}
 }
