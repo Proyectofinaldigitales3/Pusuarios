@@ -87,6 +87,11 @@ typedef struct {
     bool is_blocked;                        /**< Indica si el usuario está bloqueado */
 } User;
 
+typedef struct {
+    double amount;   // Valor del billete
+    int quantity; // Cantidad de billetes disponibles
+} Denomination;
+
 /**
  * @brief Indica si se ha presionado una tecla.
  */

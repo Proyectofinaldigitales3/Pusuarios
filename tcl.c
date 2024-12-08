@@ -41,6 +41,12 @@ User users[NUM_USERS] = {
     {"567890", "5678", "Pedro Sánchez", 100000, 0, false}
 };
 
+Denomination denominations[] = {
+    {10000, 1},  // 5 billetes de 10,000
+    {20000, 2},  // 2 billetes de 20,000
+    {50000, 2},  // 2 billetes de 50,000
+    {100000, 2}, // 2 billetes de 100,000
+};
 /**
  * @brief Variable que indica si se ha presionado una tecla.
  */
@@ -96,7 +102,7 @@ absolute_time_t input_start_time;
  */
 User* current_user = NULL;
 
-double amount= 0;
+int selected_index = 0;
 
 
 
@@ -182,7 +188,8 @@ void reset_state() {
     current_user = NULL;
     input_start_time = get_absolute_time();
     led_on_gpio12_permanently();                  //----------
-    printf("\nIngrese ID de 6 dígitos:\n");
+            printf("Bienvenido a CashMate");
+            printf("\nIngrese su ID (6 digitos):\n");
 }
 
 /**
@@ -253,24 +260,19 @@ void process_logged_in_state(char key) {
 void amount_selection(char key) {
     switch (key) {
         case 'A': // Retirar dinero
-            amount=10000;
+            selected_index=0;
             withdraw_money();
             break;
         case 'B': // Consultar saldo
-
+            selected_index=1;
             withdraw_money();
             break;
         case 'C':
-             amount=20000;
+             selected_index=2;
             withdraw_money();
             break;
         case 'D':
-            amount=50000;
-            withdraw_money();
-            reset_state();
-            break;
-        case '*':
-            amount=100000;
+            selected_index=3;
             withdraw_money();
             break;
         default:
@@ -283,16 +285,39 @@ void amount_selection(char key) {
 void withdraw_money() {
     if (current_user->is_blocked) {
         printf("\nError: Su cuenta está bloqueada.\n");
+        reset_state();
         return;
     }
-    if (amount > current_user->balance) {
-        printf("\nError: Fondos insuficientes. Su saldo actual es %.2f\n", current_user->balance);
-    } else {
-        current_user->balance -= amount;
-        printf("\nRetiro exitoso. Su nuevo saldo es: %.2f\n", current_user->balance);
-        current_state = STATE_CHECK_BALANCE;
+
+    // Seleccionar la denominación
+    Denomination* selected = &denominations[selected_index];
+
+    // Verificar disponibilidad de billetes
+    if (selected->quantity < 1) {
+        printf("\nError: No hay billetes de %d disponibles. Intente con otra denominación.\n", selected->amount);
+        amount_menu();
+        return;
     }
+
+    // Verificar saldo suficiente
+    if (selected->amount > current_user->balance) {
+        printf("\nError: Fondos insuficientes. Su saldo actual es %.2f\n", current_user->balance);
+        amount_menu();
+        return;
+    }
+
+
+    // Realizar el retiro
+    current_user->balance -= selected->amount;
+    selected->quantity -= 1;
+
+    printf("\nÉxito: Retiró %d. Retiro con el valor de %.2f\n", selected->amount); 
+
+    // Mostrar balance actualizado
+    current_state = STATE_CHECK_BALANCE;
+    check_balance();
 }
+
 // Función para consultar el saldo
 void check_balance() {
     if (current_user->is_blocked) {
@@ -301,14 +326,22 @@ void check_balance() {
     }
 
     printf("\nSu saldo actual es: %.2f\n", current_user->balance);
+    printf("\nPresione '#' para finalizar");
 }
-
 /**
  * @brief Procesa la tecla presionada por el usuario según el estado actual del sistema.
  * 
  * @param key Tecla presionada por el usuario.
  */
 void process_key(char key) {
+    absolute_time_t current_time = get_absolute_time();
+    
+    if (absolute_time_diff_us(input_start_time, current_time) > (MAX_INPUT_TIME_MS * 1000) &&
+        current_state == STATE_ENTER_PASSWORD) {
+        handle_timeout();
+        return;
+    }
+
     switch (current_state) {
         case STATE_ENTER_ID:
             if (input_index < ID_LENGTH) {
@@ -328,7 +361,8 @@ void process_key(char key) {
                         reset_state();
                     } else {
                         printf("\nIngrese contraseña de 4 dígitos:\n");
-                        start_blink();                                                        // titilea led amarillo
+                        start_blink();
+                        input_start_time = get_absolute_time();                                                       // titilea led amarillo
                         current_state = STATE_ENTER_PASSWORD;
                         input_index = 0;
                     }
@@ -372,13 +406,15 @@ void process_key(char key) {
             break;
         
         case STATE_CHECK_BALANCE:  // Maneja la consulta de saldo
+        
             if (key == '#') { // Confirma para salir del estado
-                printf("\nVolviendo al menú principal...\n");
-                current_state = STATE_LOGGED_IN;
-                show_menu();
+                printf("\nGracias por utilzar nuestros serivicos\n");
+                reset_state();
+
             } else {
                 check_balance();
             }
+        
             break;
 
         case STATE_WITHDRAW_MONEY:  // Maneja el retiro de dinero

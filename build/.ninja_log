@@ -95,8 +95,8 @@
 183	643	7550566214876984	CMakeFiles/pusuarios.dir/C_/Program_Files/Raspberry_Pi/Pico_SDK_v1.5.1/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj	ba2d5ffcfb8f8205
 108	664	7550566215161379	CMakeFiles/pusuarios.dir/C_/Program_Files/Raspberry_Pi/Pico_SDK_v1.5.1/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj	8cfa563bea4df468
 610	1506	7550566223909204	CMakeFiles/pusuarios.dir/C_/Program_Files/Raspberry_Pi/Pico_SDK_v1.5.1/pico-sdk/src/common/pico_time/time.c.obj	6ff0c8003ab5d0b4
-39	383	7550571025637256	CMakeFiles/pusuarios.dir/main.c.obj	3f4ddc6367d24bbf
-54	433	7550571026128141	CMakeFiles/pusuarios.dir/tcl.c.obj	14b137eaec46230e
+69	320	7551446661577399	CMakeFiles/pusuarios.dir/main.c.obj	3f4ddc6367d24bbf
+80	352	7551446661916239	CMakeFiles/pusuarios.dir/tcl.c.obj	14b137eaec46230e
 209	844	7550566217555312	CMakeFiles/pusuarios.dir/C_/Program_Files/Raspberry_Pi/Pico_SDK_v1.5.1/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj	a90677123168c379
 530	944	7550566218687433	CMakeFiles/pusuarios.dir/C_/Program_Files/Raspberry_Pi/Pico_SDK_v1.5.1/pico-sdk/src/common/pico_sync/lock_core.c.obj	da38a77fe3d6f2e
 502	975	7550566218777190	CMakeFiles/pusuarios.dir/C_/Program_Files/Raspberry_Pi/Pico_SDK_v1.5.1/pico-sdk/src/common/pico_sync/sem.c.obj	1c83ce516ffb90bf
@@ -150,4 +150,7 @@
 3419	3723	7550566246652540	CMakeFiles/pusuarios.dir/C_/Program_Files/Raspberry_Pi/Pico_SDK_v1.5.1/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj	62ac87b4847eb280
 3326	3783	7550566247266110	CMakeFiles/pusuarios.dir/C_/Program_Files/Raspberry_Pi/Pico_SDK_v1.5.1/pico-sdk/lib/tinyusb/src/tusb.c.obj	884b1b5cad3d09a4
 3389	3885	7550566248296971	CMakeFiles/pusuarios.dir/C_/Program_Files/Raspberry_Pi/Pico_SDK_v1.5.1/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj	7d782ca717b81ca5
-434	1263	7550571031174523	pusuarios.elf	9ccaec188097571b
+352	773	7551446664493452	pusuarios.elf	9ccaec188097571b
+24	255	7553765494405133	CMakeFiles/pusuarios.dir/main.c.obj	3f4ddc6367d24bbf
+36	289	7553765494750278	CMakeFiles/pusuarios.dir/tcl.c.obj	14b137eaec46230e
+289	737	7553765497442265	pusuarios.elf	9ccaec188097571b

@@ -25,6 +25,8 @@
  * @return 0 si la ejecución es exitosa.
  */
 int main() {
+    printf("Sistema de Control de Acceso\n");
+    printf("Ingrese ID de 6 dígitos:\n");
     stdio_init_all();           /**< Inicializa el subsistema */
     inicialization();           /**< Inicializa las señales luminosas */
     led_on_gpio12_permanently();     /**< Enciende el LED amarillo antes de ser presionada alguna tecla */
@@ -32,17 +34,21 @@ int main() {
     last_key_time = get_absolute_time();  /**< Registra el tiempo de la última tecla presionada */
     input_start_time = get_absolute_time();   /**< Registra el tiempo de inicio del input */
     
-    printf("Sistema de Control de Acceso\n");
-    printf("Ingrese ID de 6 dígitos:\n");
+
     
     while (true) {
         update_blink();   /**< Actualiza el estado del LED titilante (LED amarillo titila ingresando clave) */
         if (key_pressed) {
             process_key(last_key);   /**< Procesa la última tecla presionada */
             key_pressed = false;     /**< Reinicia la bandera de tecla presionada */
-        sleep_ms(500);         
+        }
+        
+    if (current_state == STATE_ENTER_PASSWORD &&
+        absolute_time_diff_us(input_start_time, get_absolute_time()) > (MAX_INPUT_TIME_MS * 1000)) {
+        handle_timeout(); /**< Maneja el tiempo límite */
     }
-    
+
+        sleep_ms(500);          /**< retraso de 500 ms  */
+    }
     return 0;
-}
 }
