@@ -17,6 +17,7 @@ add_executable(pusuarios
     main.c
     tcl.c
     s_luminosa.c
+    pwm.c
 )
 
 # pico_stdlib library. You can add more if they are needed

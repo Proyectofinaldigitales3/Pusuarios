@@ -90,6 +90,7 @@ typedef struct {
 typedef struct {
     double amount;   // Valor del billete
     int quantity; // Cantidad de billetes disponibles
+    int pinselect;
 } Denomination;
 
 /**

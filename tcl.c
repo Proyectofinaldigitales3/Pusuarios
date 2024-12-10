@@ -7,6 +7,7 @@
  */
 #include "tcl.h"
 #include "s_luminosa.h"
+#include"pwm.h"
 
 /**
  * @brief Pines correspondientes a las filas del teclado matricial.
@@ -42,10 +43,10 @@ User users[NUM_USERS] = {
 };
 
 Denomination denominations[] = {
-    {10000, 1},  // 5 billetes de 10,000
-    {20000, 2},  // 2 billetes de 20,000
-    {50000, 2},  // 2 billetes de 50,000
-    {100000, 2}, // 2 billetes de 100,000
+    {10000, 5, 16},  // 5 billetes de 10,000
+    {20000, 5, 18},  // 2 billetes de 20,000
+    {50000, 5, 19},  // 2 billetes de 50,000
+    {100000, 5, 20}, // 2 billetes de 100,000
 };
 /**
  * @brief Variable que indica si se ha presionado una tecla.
@@ -308,6 +309,7 @@ void withdraw_money() {
 
 
     // Realizar el retiro
+    mov_motors(selected->pinselect);
     current_user->balance -= selected->amount;
     selected->quantity -= 1;
 
